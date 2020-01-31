@@ -28,8 +28,8 @@ const ColorList = ({ colors, updateColors }) => {
       .then(res => {
         updateColors(
           colors.map(color => {
-            if (color.id === colorToEdit.id) {
-              return colorToEdit;
+            if (color.id === res.data.id) {
+              return res.data;
             } else {
               return color;
             }
@@ -37,6 +37,7 @@ const ColorList = ({ colors, updateColors }) => {
         );
 
         setColorToEdit(initialColor);
+        setEditing(false);
       })
       .catch(err => console.log(err));
   };
