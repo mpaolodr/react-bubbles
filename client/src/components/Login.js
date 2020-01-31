@@ -22,11 +22,11 @@ const Login = props => {
   // submit handler
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(user);
     axiosWithAuth()
       .post("/login", user)
       .then(res => {
         localStorage.setItem("token", res.data.payload);
+        setUser(initialFormState);
         props.history.push("/bubble-page");
       })
       .catch(err => console.log(err));
